@@ -1,0 +1,42 @@
+From 2b0c4b953357f15fa3b8d9afa9c0b17ad3e10151 Mon Sep 17 00:00:00 2001
+From: Shenyufan <751890223@qq.com>
+Date: Thu, 8 Aug 2024 22:31:31 +0800
+Subject: [PATCH] delete roles
+
+---
+ CMakeLists.txt | 19 +------------------
+ 1 file changed, 1 insertion(+), 18 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 008443a..45161d3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65,24 +65,7 @@ OPTION(TREESHEETS_WITH_STATIC_WXWIDGETS "Build wxWidgets along with TreeSheets a
+ ######### GIT SUBMODULES AUTOMATIC HANDLING ########
+ # Taken from https://cliutils.gitlab.io/modern-cmake/chapters/projects/submodule.html
+ 
+-find_package(Git QUIET)
+-if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
+-# Update submodules as needed
+-    OPTION(GIT_WXWIDGETS_SUBMODULES "Check wxWidgets git submodules during build" ON)
+-    if(GIT_WXWIDGETS_SUBMODULES)
+-        message(STATUS "The Git wxWidgets submodules are currently being updated...")
+-        execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --remote --recursive
+-                        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+-                        RESULT_VARIABLE GIT_SUBMOD_RESULT)
+-        if(NOT GIT_SUBMOD_RESULT EQUAL "0")
+-            message(FATAL_ERROR "git submodule update --init --recursive failed with ${GIT_SUBMOD_RESULT}, please checkout submodules")
+-        endif()
+-        if(NOT EXISTS "${PROJECT_SOURCE_DIR}/lib/wxWidgets/CMakeLists.txt")
+-            message(FATAL_ERROR "The submodules were not downloaded! GIT_WXWIDGETS_SUBMODULES failed.")
+-        endif()
+-        set(TREESHEETS_WITH_STATIC_WXWIDGETS ON)
+-    endif()
+-endif()
++
+ 
+ ######## TREESHEETS WITH STATIC WXWIDGETS ########
+ 
+-- 
+2.43.4
+
