@@ -1,0 +1,28 @@
+version: "1"
+
+package:
+  id: io.github.x11-calc
+  name: x11-calc
+  version: 0.0.14.156
+  kind: app
+  description: |
+    x11-calc
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+command:
+  - /opt/apps/io.github.x11-calc/files/bin/x11-calc-80
+
+sources:
+  - kind: git
+    url: https://github.com/mike632t/x11-calc.git
+    version: master
+    commit: 3511ea3df42c544b5f73b3d2fc41b56c6e908223
+
+build: |
+  cd /project/linglong/sources/x11-calc.git/
+  make
+  make install prefix=${PREFIX}
+
+
